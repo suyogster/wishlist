@@ -6,9 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
+
+    protected $gaurd = 'admin';
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +30,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function blog(){
-        return $this->hasMany('App/Blog');
-    }
 }

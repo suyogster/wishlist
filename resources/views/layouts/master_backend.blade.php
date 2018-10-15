@@ -9,10 +9,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>WishList</title>
-  <link href="{{asset('favico')}}" rel="shortcut icon" type="image/x-icon" />
+  <title>WishList Nepal | @yield('title')</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.ico')}}"/>
 
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+  <!--TinyMCE editor -->
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+
+
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -27,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{url('/dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -144,10 +150,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light"></span>
+    <a href="#" class="brand-link">
+      <img src="{{asset('images/WishListNepalLogo.png')}}" alt="Wishlist Logo" class="brand-image img-circle elevation-3"
+           style="opacity: 10%; background-color: white">
+      <span class="brand-text font-weight-light">WishList Nepal</span>
     </a>
 
     <!-- Sidebar -->
@@ -155,10 +161,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('images/ninja.png')}}" class="img-circle elevation-2" alt="User Image" style="opacity: 50%">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">
+            @if(\Illuminate\Support\Facades\Auth::check())
+              {{Auth::User()->name}}
+            @else
+              <a href="{{route('login')}}" class="btn btn-default">Login</a>
+            @endif
+          </a>
         </div>
       </div>
 
@@ -167,37 +179,95 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+
+          <li class="nav-item">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fa fa-dashboard"></i>
+              <i class="nav-icon fa fa-tachometer" aria-hidden="true"></i>
               <p>
-                Starter Pages
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-bus"></i>
+              <p>
+                Trips
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Active Page</p>
+                <a href="#" class="nav-link ">
+                  <i class="fa fa-list nav-icon" aria-hidden="true"></i>
+                  <p>All Trips</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <i class="fa fa-check nav-icon" aria-hidden="true"></i>
+                  <p>Checklists</p>
                 </a>
               </li>
             </ul>
           </li>
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+            <a href="{{route('blogs.index')}}" class="nav-link">
+              <i class="nav-icon fa fa-pencil-square-o" aria-hidden="true"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Blogs
               </p>
             </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-list" aria-hidden="true"></i>
+              <p>
+                Wish Lists
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Account
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link ">
+                  <i class="fa fa-cogs nav-icon" aria-hidden="true"></i>
+                  <p>Settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-comments nav-icon" aria-hidden="true"></i>
+                  <p>Feedbacks</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+
+              <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
+              <p>
+                logout
+              </p>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </li>
         </ul>
       </nav>
@@ -213,13 +283,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Starter Page</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
+            <h1 class="m-0 text-dark">@yield('header')</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -229,64 +293,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
+          @yield('content')
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -297,8 +304,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
+      <h5>Events</h5>
+      <p>No events are available as of now.</p>
     </div>
   </aside>
   <!-- /.control-sidebar -->
@@ -307,13 +314,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      <strong>Your True Travel Genie</strong>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="#">WishList</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
 <script src="{{asset('js/app.js')}}"></script>
+
+
+
 </body>
 </html>
