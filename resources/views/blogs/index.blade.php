@@ -33,8 +33,7 @@
                     <div class="mailbox-controls">
                     <div class="float-right">
                         <div class="btn-group" style="padding-bottom: 5px">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                            {!! $blogs->links(); !!}
                         </div>
                     </div>
                     </div>
@@ -42,12 +41,14 @@
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
                             <tbody>
+                            @foreach($blogs as $blog)
                             <tr>
-                                <td class="mailbox-name"><a href="read-mail.html">Babin Karki</a></td>
-                                <td class="mailbox-subject"><b>Shey Phoksundo</b> - Trying to find peace inside...
+                                <td class="mailbox-name"><a href="read-mail.html">{{$blog->user->name}}</a></td>
+                                <td class="mailbox-subject"><b>{{$blog->blog_title}}</b>- {{ $blog->blog_description }}
                                 </td>
-                                <td class="mailbox-date">5 mins ago</td>
+                                <td class="mailbox-date">{{ $blog -> created_at }}</td>
                             </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

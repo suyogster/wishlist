@@ -8,6 +8,7 @@
 require('./bootstrap');
 require('./custom');
 require('admin-lte');
+require('tinymce');
 
 
 window.Vue = require('vue');

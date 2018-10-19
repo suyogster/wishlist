@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
@@ -15,8 +19,11 @@ class BlogController extends Controller
     public function index()
     {
         //
-        return view('blogs.index');
-        
+
+        $blogs = Blog::query()
+            ->where('user_id', Auth::user()->id)
+            ->paginate(5);
+        return view('blogs.index')->with('blogs',$blogs);
     }
 
     /**
@@ -28,7 +35,7 @@ class BlogController extends Controller
     {
         //
         return view('blogs.create');
-     
+
     }
 
     /**
@@ -39,7 +46,29 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
         //
+        $input = $request->all();
+        //store in db
+        $blog = new Blog;
+        $blog->blog_title = $input['title'];
+        $blog->blog_content = $input['content'];
+        $blog->blog_description = $input['description'];
+        $blog->user_id = Auth::user()->id;
+        $blog->slug = $input['slug'];
+
+        //Thumbnail Image
+        if($request -> hasfile('thumbnail')){
+            $thumbnail = $request->file('thumbnail');
+            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)->resize(300, 300)->save(public_path('/images/uploads/thumbnails/' . $filename));
+            $blog->thumbnail = $filename;
+        }
+
+        $blog->save();
+
+        Session::flash('success', 'The blog was successfully saved!');
+        return redirect()->route('blogs.index');
     }
 
     /**
@@ -51,6 +80,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         //
+
     }
 
     /**
