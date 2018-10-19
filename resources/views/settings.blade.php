@@ -25,6 +25,7 @@
             </div>
             <div class="card-body">
                 <div class="position-relative mb-4">
+                    <p><strong>*Enter your normal text password*</strong></p>
                     {!! Form::model($user, ['method'=>'PATCH','route'=>['change_password'], 'autocomplete' => 'off']) !!}
                     {{Form::label('password','Password')}}
                     {{Form::text('password', $user->password,['class'=>'form-control'])}}<br>
