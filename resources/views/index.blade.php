@@ -1,5 +1,6 @@
 
 @extends('layouts.master_backend')
+@section('title','Dashboard')
 
 @section('content')
 <div class="row">
@@ -14,7 +15,7 @@
             <div class="card-body">
                 <div class="position-relative mb-4">
                     <p>This is my first Post</p>
-                    
+
                 </div>
             </div>
         </div>

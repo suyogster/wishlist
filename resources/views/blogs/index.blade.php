@@ -43,8 +43,8 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-                                <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                                <td class="mailbox-name"><a href="read-mail.html">Babin Karki</a></td>
+                                <td class="mailbox-subject"><b>Shey Phoksundo</b> - Trying to find peace inside...
                                 </td>
                                 <td class="mailbox-date">5 mins ago</td>
                             </tr>

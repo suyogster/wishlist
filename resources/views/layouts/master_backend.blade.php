@@ -161,7 +161,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('images/ninja.png')}}" class="img-circle elevation-2" alt="User Image" style="opacity: 50%">
+          <img src="/images/uploads/avatars/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="User Image" style="opacity: 50%">
         </div>
         <div class="info">
           <a href="#" class="d-block">
@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ url('/dashboard') }}" class="nav-link active">
               <i class="nav-icon fa fa-tachometer" aria-hidden="true"></i>
               <p>
                 Dashboard
@@ -241,7 +241,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ url('/settings') }}" class="nav-link ">
                   <i class="fa fa-cogs nav-icon" aria-hidden="true"></i>
                   <p>Settings</p>
                 </a>
