@@ -163,6 +163,7 @@ return [
         /*
          * Package Service Providers...
          */
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         /*
