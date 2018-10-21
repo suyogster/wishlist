@@ -14,11 +14,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Enter Blog Title">
+                            <input type="text" class="form-control" name="title" placeholder="Enter Blog Title" id="blog_title" onblur="updateSlug()" autocomplete=off>
                         </div>
                         <div class="form-group">
-                            <label for="slug">Permalink</label>
-                            <input type="text" class="form-control" name="slug" placeholder="Enter Slug">
+                            <label for="slug" >Permalink</label>
+                            <input type="text" class="form-control" name="slug" placeholder="Enter Slug" id="blog_slug">
                         </div>
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>
@@ -41,3 +41,13 @@
         </div>
     </div>
 @endsection
+<script>
+    //Generating SLug
+    function updateSlug() {
+        var title = document.getElementById('blog_title');
+        var slug = document.getElementById('blog_slug');
+        var result = title.value;
+        result = result.replace(/,/g, " ").trim().replace(/ /g, "-").toLowerCase();
+        slug.value = result;
+    }
+</script>
