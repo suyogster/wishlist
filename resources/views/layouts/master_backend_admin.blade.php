@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{url('/dashboard')}}" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -165,8 +165,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">
-                        @if(\Illuminate\Support\Facades\Auth::check())
-                            {{Auth::User()->name}}
+                        @if(\Illuminate\Support\Facades\Auth::check('admin'))
+                            {{Auth::User('admin')->name}}
                         @else
                             <a href="{{route('login')}}" class="btn btn-default">Login</a>
                         @endif
@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          with font-awesome or any other icon font library -->
 
                     <li class="nav-item">
-                        <a href="{{ url('/dashboard') }}" class="nav-link active">
+                        <a href="#" class="nav-link active">
                             <i class="nav-icon fa fa-tachometer" aria-hidden="true"></i>
                             <p>
                                 Dashboard
@@ -257,17 +257,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <li class="nav-item">
-                        <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
-
+                        <a href="{{route('admin.logout')}}" class="nav-link">
                             <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
                             <p>
                                 logout
                             </p>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+
                     </li>
                 </ul>
             </nav>

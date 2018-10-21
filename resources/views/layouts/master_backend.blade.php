@@ -214,7 +214,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{route('blogs.index')}}" class="nav-link">
+            <a href="{{route('blogs.index')}}" class="nav-link" id="blogRoute">
               <i class="nav-icon fa fa-pencil-square-o" aria-hidden="true"></i>
               <p>
                 Blogs
@@ -223,7 +223,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('wishlist.index')}}" class="nav-link">
               <i class="nav-icon fa fa-list" aria-hidden="true"></i>
               <p>
                 Wish Lists
@@ -257,17 +257,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
-
-              <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
+            <a href="{{route('user.logout')}}" class="nav-link">
+                <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
               <p>
                 logout
               </p>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
           </li>
         </ul>
       </nav>
@@ -357,6 +352,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     };
 
     tinymce.init(editor_config);
+
 </script>
 </body>
 </html>
