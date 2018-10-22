@@ -11,6 +11,11 @@ use Hash;
 class UserSettingsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function viewSettingsPage()
     {
     return view('settings')->withUser(Auth::user());
