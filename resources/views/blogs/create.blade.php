@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group form-inline">
                             <label for="slug" style="display: inline-block; padding-right: 10px" >Permalink:</label>
-                            <input type="text" class="form-control"  style="display: inline-block; width: 50%" name="slug" placeholder="Slug will be generated automatically" id="blog_slug" readonly>
+                            <input type="text" class="form-control"  style="display: inline-block; width: 50%" name="slug" placeholder="Generating..." id="blog_slug" readonly>
                         </div>
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>

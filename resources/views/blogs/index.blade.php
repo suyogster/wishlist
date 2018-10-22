@@ -43,10 +43,10 @@
                             <tbody>
                             @foreach($blogs as $blog)
                             <tr>
-                                <td class="mailbox-name"><a href="read-mail.html">{{$blog->user->name}}</a></td>
-                                <td class="mailbox-subject"><b>{{$blog->blog_title}}</b>- {{ $blog->blog_description }}
-                                </td>
-                                <td class="mailbox-date">{{ $blog -> created_at }}</td>
+                                <td class="mailbox-name"><a href="#">{{$blog->user->name}}</a></td>
+                                <td class="mailbox-subject"><b>{{$blog->blog_title}}</b></td>
+                                <td class="mailbox-read-info">{{ substr($blog->blog_description, 0,100) }}{{strlen($blog->blog_description) > 100 ? "..." : ""}}</td>
+                                <td class="mailbox-date">{{$blog->created_at->diffforhumans() }}</td>
                             </tr>
                                 @endforeach
                             </tbody>
