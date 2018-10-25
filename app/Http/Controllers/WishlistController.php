@@ -42,6 +42,14 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        $wishlist = new Wishlist();
+        $wishlist->wish = $input['wish'];
+        $wishlist->completed = $input['completed'];
+        $wishlist->user_id = Auth::user()->id;
+        $wishlist->save();
+
+        return redirect()->route('wishlist.index');
     }
 
     /**

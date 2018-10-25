@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function blog(){
         return $this->hasMany('App\Blog');
     }
+
+    public function  wishlist(){
+        return $this-$this->hasMany('App\Wishlist');
+    }
 }

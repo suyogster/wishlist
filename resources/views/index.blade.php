@@ -14,8 +14,8 @@
 
             <div class="card-body">
                 <div class="position-relative mb-4">
-                    <p>This is my first Post</p>
-
+                    <p>{{$blog->blog_title}}</p>
+                    <p class="card-link"><a href="#">Read more</a></p>
                 </div>
             </div>
         </div>

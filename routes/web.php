@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('index');
-});
+Route::get('/dashboard', 'BlogController@dashboardIndex')->name('dashboard.index');
 
 Auth::routes();
 
