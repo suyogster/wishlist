@@ -122,4 +122,11 @@ class BlogController extends Controller
     {
         //
     }
+
+    public function dashboardIndex()
+    {
+        $blog = Blog::latest()->first();
+
+        return view('index')->withBlog($blog);
+    }
 }
