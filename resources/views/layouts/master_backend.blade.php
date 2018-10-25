@@ -12,11 +12,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>WishList Nepal | @yield('title')</title>
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.ico')}}"/>
 
+    <!--TinyMCE editor -->
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
-
-    <!--TinyMCE editor -->
-  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -287,6 +286,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+          @if($errors->any())
+              <div class="alert alert-error">
+                  <h4>Warning! Read the instructions below</h4>
+                  <ul>
+                      @foreach($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+              <br>
+          @endif
+      </div>
           @yield('content')
       </div><!-- /.container-fluid -->
     </div>
