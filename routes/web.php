@@ -24,6 +24,7 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 
 //Resource Route of Blog Controller
 Route::resource('/blogs', 'BlogController');
+Route::resource('/feedbacks', 'FeedbackController');
 
 //Resource Route of Wishlist Controller
 Route::resource('/wishlist','WishlistController');
