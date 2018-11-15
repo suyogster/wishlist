@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/test', function(){
+    return view('frontend/layouts/master');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
