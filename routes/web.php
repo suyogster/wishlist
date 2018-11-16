@@ -28,6 +28,8 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 
 //Resource Route of Blog Controller
 Route::resource('/blogs', 'BlogController');
+
+//Routes for feedback
 Route::resource('/feedbacks', 'FeedbackController');
 
 //Resource Route of Wishlist Controller
@@ -56,3 +58,11 @@ Route::prefix('admin')->group(function (){
 
 });
 
+//EVENTS ROUTES
+Route::resource('/events', 'EventController');
+
+//Types ROUTES
+Route::resource('/types', 'TypeController');
+
+//Itenary ROUTES
+Route::resource('/itenary', 'ItenaryController');
